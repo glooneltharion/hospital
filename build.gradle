@@ -1,0 +1,129 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.6'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.serpienthe'
+version = '0.0.1-SNAPSHOT'
+description = 'hospital'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // ============================================================
+    // SPRING CORE
+    // ============================================================
+
+    // Core Spring Boot functionality
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+
+    // ============================================================
+    // WEB & UI
+    // ============================================================
+
+    // Spring MVC, REST controllers and embedded web server
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Server-side HTML templates
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // Thymeleaf integration with Spring Security
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+
+    // ============================================================
+    // SECURITY
+    // ============================================================
+
+    // Authentication and authorization
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+
+    // ============================================================
+    // DATABASE & PERSISTENCE
+    // ============================================================
+
+    // Spring Data JPA and Hibernate ORM
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // MySQL database driver
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // H2 in-memory database used for tests
+    testImplementation 'com.h2database:h2'
+
+
+    // ============================================================
+    // VALIDATION
+    // ============================================================
+
+    // Bean validation using Jakarta Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
+    // ============================================================
+    // KAFKA
+    // ============================================================
+
+    // Apache Kafka integration for event-driven communication
+    implementation 'org.springframework.kafka:spring-kafka'
+
+
+    // ============================================================
+    // LOMBOK
+    // ============================================================
+
+    // Reduces boilerplate code such as getters, setters and constructors
+    compileOnly 'org.projectlombok:lombok'
+
+    // Enables Lombok annotation processing during compilation
+    annotationProcessor 'org.projectlombok:lombok'
+
+
+    // ============================================================
+    // MAPSTRUCT
+    // ============================================================
+
+    // Generates type-safe mapper implementations at compile time
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+
+    // Generates MapStruct mapper implementations
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    // Allows Lombok and MapStruct annotation processors to work together
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+
+    // ============================================================
+    // DEVELOPMENT
+    // ============================================================
+
+    // Automatically restarts the application during development
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
+    // ============================================================
+    // TESTING
+    // ============================================================
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
